@@ -9,20 +9,11 @@ public partial class TaskIndex : ContentPage
 	{
 		InitializeComponent();
         taskList.ItemsSource = App.TaskVM.Tasks;
-        App.TaskVM._Tasks.CollectionChanged += (param,e) => { 
-            taskList02.ItemsSource = App.TaskVM._Tasks;
-        };
-        taskList02.ItemsSource = App.TaskVM._Tasks;
     }
     
     public void OnGetButtonClicked(object sender, EventArgs args)
     {
         Console.WriteLine("OnGetButtonClicked ‚ªŒÄ‚Î‚ê‚½‚æB");
-
         App.TaskVM.TaskGetAllCommand.ExecuteAsync();
-        //taskList.ItemsSource = App.TaskVM.Tasks;
-        App.TaskVM.RenewTasks();
-        //taskList2.ItemsSource = App.TaskVM._Tasks;
-
     }
 }

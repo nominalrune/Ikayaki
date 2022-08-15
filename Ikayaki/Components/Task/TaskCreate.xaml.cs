@@ -22,13 +22,4 @@ public partial class TaskCreate : ContentPage
          newTaskDetail.Text= App.TaskVM.TaskDetail;
     }
 
-    public void OnGetButtonClicked(object sender, EventArgs args)
-    {
-        Console.WriteLine("OnGetButtonClicked ‚ªŒÄ‚Î‚ê‚½‚æB");
-        statusMessage.Text = "";
-
-        App.TaskVM.TaskGetAllCommand.ExecuteAsync();
-        App.TaskVM.RenewTasks();
-
-    }
 }
