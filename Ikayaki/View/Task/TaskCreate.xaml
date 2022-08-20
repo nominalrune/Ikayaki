@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ikayaki.TaskCreate">
-    <Grid Padding="5" RowSpacing="2" ColumnSpacing="1">
+             x:Class="Ikayaki.Page.TaskCreate"
+             BackgroundColor="#f8f8f8">
+    <Grid HorizontalOptions="Fill"  Margin="24" Padding="5" RowSpacing="24" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="200" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Entry x:Name="newTask"
+        <VerticalStackLayout HorizontalOptions="Fill">
+            <Entry Grid.Row="0" x:Name="newTask"
            Placeholder="Enter name"
-               Grid.Row="0" />
-        <Editor x:Name="newTaskDetail"
+               FontSize="Header"
+                    Margin="0,0,0,12"
+              />
+            <BoxView Color="SlateBlue" HeightRequest="5"
+                 HorizontalOptions="Fill"/>
+        </VerticalStackLayout>
+        <Editor Grid.Row="1" x:Name="newTaskDetail"
             Placeholder="Enter description"
-            Grid.Row="1" />
+                AutoSize="TextChanges"
+                FontSize="Body"
+            />
         <Button Text="Add Task"
             Grid.Row="2"
             Clicked="OnNewButtonClicked" />

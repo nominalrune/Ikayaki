@@ -3,28 +3,22 @@
     x:Class="Ikayaki.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Ikayaki"
+    xmlns:local="clr-namespace:Ikayaki.Page"
     Shell.FlyoutBehavior="Flyout">
 
     <Shell.FlyoutHeader>
         <Grid HeightRequest="100" BackgroundColor="DarkSlateBlue">
-            <Image Source="moon.png" />
+            <Image Source="dotnet_bot.png" />
         </Grid>
     </Shell.FlyoutHeader>
-    <FlyoutItem Title="Moon Phase" Icon="dotnet_bot.png">
-        <ShellContent  Title="new task" Icon="dotnet_bot.png"
-        ContentTemplate="{DataTemplate local:TaskCreate}"/>
-        <ShellContent  Title="Index" Icon="dotnet_bot.png"
-        ContentTemplate="{DataTemplate local:TaskIndex}"/>
-    </FlyoutItem>
-    <FlyoutItem Title="Moon Phase" Icon="dotnet_bot.png">
-        <ShellContent  Title="new task" Icon="dotnet_bot.png"
-        ContentTemplate="{DataTemplate local:TaskCreate}"/>
-        <ShellContent  Title="Index" Icon="dotnet_bot.png"
-        ContentTemplate="{DataTemplate local:TaskIndex}"/>
-    </FlyoutItem>
-    <FlyoutItem Title="About" Icon="dotnet_bot.png">
+    <FlyoutItem Title="DashBoard">
         <ShellContent
         ContentTemplate="{DataTemplate local:MainPage}"/>
+    </FlyoutItem>
+    <FlyoutItem  Title="Tasks">
+        <ShellContent  Title="Index"
+        ContentTemplate="{DataTemplate local:TaskIndex}"/>
+        <ShellContent Title="new task"
+        ContentTemplate="{DataTemplate local:TaskCreate}"/>
     </FlyoutItem>
 </Shell>

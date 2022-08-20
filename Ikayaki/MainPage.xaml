@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ikayaki.MainPage">
-
+             x:Class="Ikayaki.Page.MainPage">
+    <HorizontalStackLayout HorizontalOptions="Center">
+    <Button Text="View All Task"
+            Margin="20"
+            VerticalOptions="Center"
+                Clicked="OnIndexButtonClicked" />
+    <Button Text="Create New Task"
+            Margin="20"
+            VerticalOptions="Center"
+                Clicked="OnCreateButtonClicked" />
+    </HorizontalStackLayout>
 </ContentPage>
