@@ -2,7 +2,7 @@
 using TaskModel = Ikayaki.Models.Task;
 using System.Threading.Tasks;
 
-namespace Ikayaki.Repository
+namespace Ikayaki.Repositories
 {
     public class UserRepository
     {

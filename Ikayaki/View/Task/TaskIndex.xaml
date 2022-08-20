@@ -11,7 +11,7 @@
     <!--<RefreshView IsRefreshing="{Binding Status}"
              Command="{Binding TaskGetAllCommand}"
         >-->
-    <RefreshView x:Name="refleshView"
+    <RefreshView x:Name="refreshView"
         >
         <AbsoluteLayout>
             <CollectionView 

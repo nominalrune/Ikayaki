@@ -1,5 +1,5 @@
-﻿using Ikayaki.Repository;
-using Ikayaki.ViewModel;
+﻿using Ikayaki.Repositories;
+using Ikayaki.ViewModels;
 namespace Ikayaki;
 
 public static class MauiProgram

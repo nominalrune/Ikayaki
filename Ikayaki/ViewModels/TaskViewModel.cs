@@ -3,7 +3,7 @@
 using TaskModel =Ikayaki.Models.Task;
 using System.ComponentModel;
 
-namespace Ikayaki.ViewModel
+namespace Ikayaki.ViewModels
 {
     public class TaskViewModel : INotifyPropertyChanged
     {

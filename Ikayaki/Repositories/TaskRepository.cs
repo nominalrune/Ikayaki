@@ -2,7 +2,7 @@
 using TaskData=Ikayaki.Models.TaskData;
 using TaskModel = Ikayaki.Models.Task;
 
-namespace Ikayaki.Repository
+namespace Ikayaki.Repositories
 {
 	public class TaskRepository
 	{

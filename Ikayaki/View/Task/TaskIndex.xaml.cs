@@ -1,5 +1,5 @@
 using TaskModel = Ikayaki.Models.Task;
-using Ikayaki.ViewModel;
+using static Ikayaki.App.Control;
 using System.Windows.Input;
 
 namespace Ikayaki.Page
@@ -7,17 +7,17 @@ namespace Ikayaki.Page
 
     public partial class TaskIndex : ContentPage
     {
-        //public bool isRefreshing=false;// reflesh‚ÍVM‚É‘‚­‚×‚µI
+        //public bool isRefreshing=false;// refresh‚ÍVM‚É‘‚­‚×‚µI
         //public  ICommand refreshCommand;
         public TaskIndex()
         {
             InitializeComponent();
-            taskList.ItemsSource = App.TaskVM.Tasks;
+            taskList.ItemsSource = ViewModel.Task.Tasks;
             BindingContext=this;
 
-            //refleshView.IsRefreshing = isRefleshing;
-            //refleshCommand=new ICommand(()=>)
-            refleshView.Command = App.TaskVM.TaskGetAllCommand;
+            //refreshView.IsRefreshing = isRefreshing;
+            //refreshCommand=new ICommand(()=>)
+            refreshView.Command =ViewModel.Task.TaskGetAllCommand;
         }
         async void OnAddButtonClicked(object sender, EventArgs args)
         {
