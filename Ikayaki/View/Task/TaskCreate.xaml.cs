@@ -1,5 +1,7 @@
-using TaskModel = Ikayaki.Models.Task;
-using Ikayaki.Repository;
+using Ikayaki.DBModels;
+using Reactive.Bindings;
+using TaskModel = Ikayaki.DBModels.Task;
+
 
 namespace Ikayaki.Page
 {
@@ -7,36 +9,36 @@ namespace Ikayaki.Page
     [QueryProperty(nameof(task), "TheTask")]
     public partial class TaskCreate : ContentPage
     {
-        TaskModel _task;
-        public TaskModel task
+        string StatusMessage { get; set; } = "";
+        TaskModel task { get; set;}
+        public TaskModel Task
         {
-            get => _task;
+            get => task;
             set
             {
-                _task = value;
-                newTask.Text = value.Name;
-                newTaskDetail.Text = value.Description;
+                task = value;
                 OnPropertyChanged();
-
             }
         }
+        internal string TaskTitle { get; set; } = "";
+        public string TaskDetail { get; set; } = "";
+        public AsyncReactiveCommand TaskAddCommand { get; } = new AsyncReactiveCommand();
+
         public TaskCreate()
         {
             InitializeComponent();
-            BindingContext = this;
 
         }
         public async void OnNewButtonClicked(object sender, EventArgs args)
         {
-            Console.WriteLine("OnNewButtonClicked Ç™åƒÇŒÇÍÇΩÇÊÅB");
-            statusMessage.Text = "";
-            App.Control.ViewModel.TaskInput.TaskTitle = newTask.Text;
-            App.Control.ViewModel.TaskInput.TaskDetail = newTaskDetail.Text;
-
-            await App.Control.ViewModel.TaskInput.TaskAddCommand.ExecuteAsync();
-            statusMessage.Text = App.Control.ViewModel.TaskInput.StatusMessage;
-            newTask.Text = App.Control.ViewModel.TaskInput.TaskTitle;
-            newTaskDetail.Text = App.Control.ViewModel.TaskInput.TaskDetail;
+            StatusMessage = "";
+            var res = await App.Control.Repository.Task.Add(TaskTitle, TaskDetail);
+            StatusMessage = App.Control.Repository.Task.StatusMessage;
+            if (res != null)
+            {
+                TaskDetail = "";
+                TaskTitle = "";
+            }
         }
 
     }

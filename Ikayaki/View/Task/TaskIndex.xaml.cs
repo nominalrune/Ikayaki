@@ -1,4 +1,4 @@
-using TaskModel = Ikayaki.Models.Task;
+using TaskModel = Ikayaki.DBModels.Task;
 using static Ikayaki.App.Control;
 using System.Windows.Input;
 

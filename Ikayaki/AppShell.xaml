@@ -3,7 +3,7 @@
     x:Class="Ikayaki.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Ikayaki.Page"
+    xmlns:page="clr-namespace:Ikayaki.Page"
     Shell.FlyoutBehavior="Flyout">
 
     <Shell.FlyoutHeader>
@@ -13,12 +13,12 @@
     </Shell.FlyoutHeader>
     <FlyoutItem Title="DashBoard">
         <ShellContent
-        ContentTemplate="{DataTemplate local:MainPage}"/>
+        ContentTemplate="{DataTemplate page:MainPage}"/>
     </FlyoutItem>
     <FlyoutItem  Title="Tasks">
         <ShellContent  Title="Index"
-        ContentTemplate="{DataTemplate local:TaskIndex}"/>
+        ContentTemplate="{DataTemplate page:TaskIndex}"/>
         <ShellContent Title="new task"
-        ContentTemplate="{DataTemplate local:TaskCreate}"/>
+        ContentTemplate="{DataTemplate page:TaskCreate}"/>
     </FlyoutItem>
 </Shell>

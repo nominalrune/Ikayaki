@@ -1,25 +1,23 @@
 ﻿using SQLite;
-using TaskData=Ikayaki.Models.TaskData;
-using TaskModel = Ikayaki.Models.Task;
+using TaskData=Ikayaki.DBModels.TaskData;
+using TaskModel = Ikayaki.DBModels.Task;
 
 namespace Ikayaki.Repositories
 {
 	public class TaskRepository
 	{
-		string dbPath { get; }
-		SQLiteAsyncConnection connection;
+		Connection connection;
 		public string StatusMessage { get; set; }
 
-		public TaskRepository(string _dbPath)
+		public TaskRepository(Connection _connection)
 		{
-			dbPath = _dbPath;
+            connection = _connection;
 		}
-
+        
 		private async Task Init()
 		{
 			if (connection != null) { return; }
-			connection = new SQLiteAsyncConnection(dbPath);
-			await connection.CreateTableAsync<TaskModel>();
+			await connection.db.CreateTableAsync<TaskModel>();
 		}
 
 		public async Task<TaskModel> Get(int Id)
@@ -27,7 +25,7 @@ namespace Ikayaki.Repositories
 			try
 			{
 				await Init();
-				return await connection.Table<TaskModel>().Where(x => x.Id == Id).FirstAsync();
+				return await connection.db.Table<TaskModel>().Where(x => x.Id == Id).FirstAsync();
 			}
 			catch (Exception ex)
 			{
@@ -41,7 +39,7 @@ namespace Ikayaki.Repositories
 			try
 			{
 				await Init();
-				return await connection.Table<TaskModel>().ToListAsync();
+				return await connection.db.Table<TaskModel>().ToListAsync();
 			}
 			catch (Exception ex)
 			{
@@ -62,7 +60,7 @@ namespace Ikayaki.Repositories
 			try
 			{
 				await Init();
-				result = await connection.InsertAsync(task);
+				result = await connection.db.InsertAsync(task);
 
 				StatusMessage = string.Format("{0} record(s) added (Name: {1})", result, name);
 			}
@@ -83,7 +81,7 @@ namespace Ikayaki.Repositories
 			try
 			{
 				await Init();
-				result = await connection.UpdateAsync(task);
+				result = await connection.db.UpdateAsync(task);
 
 				StatusMessage = $"{result} record(s) updated (Name: {name})";
 			}

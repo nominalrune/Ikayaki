@@ -1,6 +1,6 @@
 ﻿using Reactive.Bindings;
 
-using TaskModel =Ikayaki.Models.Task;
+using TaskModel =Ikayaki.DBModels.Task;
 using System.ComponentModel;
 
 namespace Ikayaki.ViewModels

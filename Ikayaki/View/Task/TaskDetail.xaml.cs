@@ -1,5 +1,5 @@
 
-using TaskModel = Ikayaki.Models.Task;
+using TaskModel = Ikayaki.DBModels.Task;
 namespace Ikayaki.Element
 { 
         public class PlusButton : IDrawable

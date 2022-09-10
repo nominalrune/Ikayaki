@@ -1,40 +1,35 @@
 ﻿using SQLite;
-using TaskModel = Ikayaki.Models.Task;
+using User=Ikayaki.DBModels.User;
 using System.Threading.Tasks;
 
 namespace Ikayaki.Repositories
 {
     public class UserRepository
     {
-        string _dbPath;
-        SQLiteAsyncConnection connection;
+        private Connection connection;
         public string StatusMessage { get; set; }
 
-        public UserRepository(string dbPath)
+        public UserRepository(Connection _connection)
         {
-            _dbPath = dbPath;
+            connection = _connection;
         }
-
         private async Task Init()
         {
             if (connection != null) { return; }
-            connection = new SQLiteAsyncConnection(_dbPath);
-            await connection.CreateTableAsync<TaskModel>();
+            await connection.db.CreateTableAsync<User>();
         }
-
-
-        public async Task<TaskModel> Add(string name, string description)
+        public async Task<User> Add(string name, string email)
         {
             if (string.IsNullOrEmpty(name))
             {
                 throw new Exception("Valid name required");
             }
             int result;
-            TaskModel task = new() { Name = name, Description = description };
+            User user = new() { Name = name, Email = email };
             try
             {
                 await Init();
-                result = await connection.InsertAsync(task);
+                result = await connection.db.InsertAsync(user);
 
                 StatusMessage = string.Format("{0} record(s) added (Name: {1})", result, name);
             }
@@ -42,37 +37,37 @@ namespace Ikayaki.Repositories
             {
                 StatusMessage = string.Format("Failed to add {0}. Error: {1}", name, ex.Message);
             }
-            return task;
+            return user;
 
         }
 
-        public async Task<List<TaskModel>> GetAll()
+        public async Task<List<User>> GetAll()
         {
             try
             {
                 await Init();
-                return await connection.Table<TaskModel>().ToListAsync();
+                return await connection.db.Table<User>().ToListAsync();
             }
             catch (Exception ex)
             {
                 StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
             }
 
-            return new List<TaskModel>();
+            return new List<User>();
         }
-        public async Task<TaskModel> Get(int Id)
+        public async Task<User> Get(int Id)
         {
             try
             {
                 await Init();
-                return await connection.Table<TaskModel>().Where(x => x.Id == Id).FirstAsync();
+                return await connection.db.Table<User>().Where(x => x.Id == Id).FirstAsync();
             }
             catch (Exception ex)
             {
                 StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
             }
 
-            return new TaskModel();
+            return new User();
         }
     }
 }

@@ -7,7 +7,7 @@ public partial class App : Application
 {
 	/// <summary>
 	/// Control class works as the main state controlling class.
-	/// It handles <code>Repository</code> and <code>ViewModel</code> class.
+	/// It handles <c>Repository</c> and <c>ViewModel</c> class.
 	/// </summary>
 	public static class Control
 	{
