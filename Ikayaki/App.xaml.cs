@@ -1,40 +1,22 @@
 ﻿using Ikayaki.Repositories;
-using Ikayaki.ViewModels;
+using TaskList =Ikayaki.Models.Tasks;
 namespace Ikayaki;
 
 
 public partial class App : Application
 {
-	/// <summary>
-	/// Control class works as the main state controlling class.
-	/// It handles <c>Repository</c> and <c>ViewModel</c> class.
-	/// </summary>
-	public static class Control
-	{
-		public static class Repository
-		{
-			public static TaskRepository Task { get; set; }
-		}
-		public static class ViewModel
-		{
-			public static TaskViewModel Task { get; set; }
-			public static TaskInputViewModel TaskInput { get; set; }
-		}
-
-	}
-
-	public App(
-		TaskRepository taskRepository,
-		TaskViewModel taskViewModel,
-		TaskInputViewModel taskInputViewModel
+    public static class Model
+    {
+        public static TaskList Tasks { get; internal set; }
+    }
+    public App(
+		Connection connection
 		)
 	{
 		InitializeComponent();
-		Control.Repository.Task = taskRepository;
-		Control.ViewModel.Task = taskViewModel;
-		Control.ViewModel.TaskInput = taskInputViewModel;
+		Model.Tasks = new TaskList(connection);
 		// gets initial Tasks
-		Control.ViewModel.Task.TaskGetAllCommand.ExecuteAsync();
+		//Control.ViewModel.Task.TaskGetAllCommand.ExecuteAsync();
 
 		MainPage = new AppShell();
 	}

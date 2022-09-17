@@ -1,6 +1,5 @@
 ﻿using SQLite;
-using TaskData=Ikayaki.DBModels.TaskData;
-using TaskModel = Ikayaki.DBModels.Task;
+using TaskModel = Ikayaki.Models.Task;
 
 namespace Ikayaki.Repositories
 {
@@ -48,8 +47,22 @@ namespace Ikayaki.Repositories
 
 			return new List<TaskModel>();
 		}
+        public async Task<List<TaskModel>> GetWhere(Func<TaskModel, bool> param)
+        {
+            try
+            {
+                await Init();
+				var res = await connection.db.Table<TaskModel>().ToListAsync();
+				return res.ToList().Where(param).ToList();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
 
-		public async Task<TaskModel> Add(string name, string description)
+            return new List<TaskModel>();
+        }
+        public async Task<TaskModel> Add(string name, string description)
 		{
 			if (string.IsNullOrEmpty(name))
 			{

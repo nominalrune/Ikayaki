@@ -1,5 +1,4 @@
 ﻿using Ikayaki.Repositories;
-using Ikayaki.ViewModels;
 namespace Ikayaki;
 
 public static class MauiProgram
@@ -15,9 +14,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
         string dbPath = FileAccessHelper.GetLocalFilePath("ikayaki.db3");
-        builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<TaskRepository>(s, dbPath));
-        builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<TaskViewModel>(s));
-        builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<TaskInputViewModel>(s));
+        builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<Connection>(s, dbPath));
 
         return builder.Build();
 		

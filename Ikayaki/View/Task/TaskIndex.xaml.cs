@@ -1,6 +1,5 @@
-using TaskModel = Ikayaki.DBModels.Task;
-using static Ikayaki.App.Control;
-using System.Windows.Input;
+using TaskModel = Ikayaki.Models.Task;
+
 
 namespace Ikayaki.Page
 {
@@ -12,12 +11,12 @@ namespace Ikayaki.Page
         public TaskIndex()
         {
             InitializeComponent();
-            taskList.ItemsSource = ViewModel.Task.Tasks;
+            taskList.ItemsSource = App.Model.Tasks.list;
             BindingContext=this;
 
             //refreshView.IsRefreshing = isRefreshing;
             //refreshCommand=new ICommand(()=>)
-            refreshView.Command =ViewModel.Task.TaskGetAllCommand;
+            //refreshView.Command =ViewModel.Task.TaskGetAllCommand;
         }
         async void OnAddButtonClicked(object sender, EventArgs args)
         {

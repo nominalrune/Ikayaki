@@ -1,6 +1,5 @@
-using Ikayaki.DBModels;
-using Reactive.Bindings;
-using TaskModel = Ikayaki.DBModels.Task;
+
+using TaskModel = Ikayaki.Models.Task;
 
 
 namespace Ikayaki.Page
@@ -22,18 +21,17 @@ namespace Ikayaki.Page
         }
         internal string TaskTitle { get; set; } = "";
         public string TaskDetail { get; set; } = "";
-        public AsyncReactiveCommand TaskAddCommand { get; } = new AsyncReactiveCommand();
 
         public TaskCreate()
         {
             InitializeComponent();
-
+            StatusMessage = App.Model.Tasks.repo.StatusMessage;
+            BindingContext =this;
         }
         public async void OnNewButtonClicked(object sender, EventArgs args)
         {
             StatusMessage = "";
-            var res = await App.Control.Repository.Task.Add(TaskTitle, TaskDetail);
-            StatusMessage = App.Control.Repository.Task.StatusMessage;
+            var res = await App.Model.Tasks.repo.Add(TaskTitle, TaskDetail);
             if (res != null)
             {
                 TaskDetail = "";

@@ -1,6 +1,5 @@
 ﻿using SQLite;
-using User=Ikayaki.DBModels.User;
-using System.Threading.Tasks;
+using User=Ikayaki.Models.User;
 
 namespace Ikayaki.Repositories
 {

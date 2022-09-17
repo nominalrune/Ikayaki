@@ -2,17 +2,26 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ikayaki.Page.TaskDetail"
-             Title="{Binding task.Name}">
+             >
     <AbsoluteLayout>
         <ScrollView
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All">
             <Frame Padding="15" Margin="30,20" CornerRadius="10" BorderColor="LightSlateGrey" BackgroundColor="#f8f8f8" HasShadow="True" >
                 <VerticalStackLayout>
-                    <Label x:Name="name" Margin="15,5,5,10" FontSize="Header" Text="{Binding task.Name}"></Label>
+                    <Label
+                        x:Name="name" 
+                        Margin="15,5,5,10" 
+                        FontSize="Header" 
+                        />
                     <BoxView Color="SlateBlue" HeightRequest="5"
                  HorizontalOptions="Fill"/>
-                    <Label x:Name="description" Margin="25,0,0,0" Padding="5" FontSize="Body" Text="{Binding task.Description}"></Label>
+                    <Label x:Name="description" 
+                           Margin="25,0,0,0" 
+                           Padding="5" 
+                           FontSize="Body"
+                           
+                           />
                 </VerticalStackLayout>
             </Frame>
         </ScrollView>

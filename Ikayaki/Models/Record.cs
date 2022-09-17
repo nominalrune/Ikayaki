@@ -1,10 +1,11 @@
-﻿
+﻿using SQLite;
 
-
-namespace Ikayaki.Models
+namespace Ikayaki.DBModels
 {
-    public interface IRecord
+    [Table("record")]
+    public class Record
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
