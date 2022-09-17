@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace Ikayaki.DBModels
+namespace Ikayaki.Models
 {
     [Table("record")]
     public class Record

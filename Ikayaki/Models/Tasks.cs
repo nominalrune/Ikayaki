@@ -9,7 +9,6 @@ namespace Ikayaki.Models
         public Tasks(Connection connection)
         {
             repo = new TaskRepository(connection);
-            list = repo.GetWhere().Result;
         }
     }
 }

@@ -59,14 +59,15 @@
     <Compile Update="View\Task\TaskIndex.xaml.cs">
       <DependentUpon>TaskIndex.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Task\TaskCreate.xaml.cs">
-      <DependentUpon>TaskCreate.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="View\Task\TaskDetail.xaml.cs">
-      <DependentUpon>TaskDetai.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
+
   <ItemGroup>
+    <MauiXaml Update="View\Task\TaskCreate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="View\Task\TaskDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="View\Task\TaskIndex.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
