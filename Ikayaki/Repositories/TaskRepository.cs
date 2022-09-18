@@ -6,18 +6,23 @@ namespace Ikayaki.Repositories
 	public class TaskRepository
 	{
 		Connection connection;
+		bool IsAvailable = false;
 		public string StatusMessage { get; set; }
 
 		public TaskRepository(Connection _connection)
 		{
             connection = _connection;
-		}
+			if (connection == null)
+			{
+				throw new ArgumentNullException(nameof(connection));
+			}
+        }
         
 		private async Task Init()
 		{
-			if (connection != null) { return; }
+			if (IsAvailable) { return; }
 			await connection.db.CreateTableAsync<TaskModel>();
-		}
+        }
 
 		public async Task<TaskModel> Get(int Id)
 		{
@@ -30,22 +35,22 @@ namespace Ikayaki.Repositories
 			{
 				StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
 			}
-
-			return new TaskModel();
+            StatusMessage = "success";
+            return new TaskModel();
 		}
 		public async Task<List<TaskModel>> GetWhere()
 		{
 			try
 			{
 				await Init();
+				StatusMessage = "success";
 				return await connection.db.Table<TaskModel>().ToListAsync();
 			}
 			catch (Exception ex)
 			{
 				StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+				throw new Exception(StatusMessage);
 			}
-
-			return new List<TaskModel>();
 		}
         public async Task<List<TaskModel>> GetWhere(Func<TaskModel, bool> param)
         {
@@ -53,13 +58,13 @@ namespace Ikayaki.Repositories
             {
                 await Init();
 				var res = await connection.db.Table<TaskModel>().ToListAsync();
+            StatusMessage = "success";
 				return res.ToList().Where(param).ToList();
             }
             catch (Exception ex)
             {
                 StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
-            }
-
+			}
             return new List<TaskModel>();
         }
         public async Task<TaskModel> Add(string name, string description)
@@ -95,8 +100,8 @@ namespace Ikayaki.Repositories
 			{
 				await Init();
 				result = await connection.db.UpdateAsync(task);
-
 				StatusMessage = $"{result} record(s) updated (Name: {name})";
+
 			}
 			catch (Exception ex)
 			{
@@ -104,7 +109,27 @@ namespace Ikayaki.Repositories
 			}
 			return task;
 		}
+        public async Task<TaskModel> Update(TaskModel _task)
+        {
+            if (string.IsNullOrEmpty(_task.Name))
+            {
+                throw new Exception("Valid name required");
+            }
+            int result;
+            try
+            {
+                await Init();
+                result = await connection.db.UpdateAsync(_task);
+                StatusMessage = $"{result} record(s) updated (Name: {_task.Name})";
+
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = $"Failed to add {_task.Name}. Error: {ex.Message}";
+            }
+            return _task;
+        }
 
 
-	}
+    }
 }

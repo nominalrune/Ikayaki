@@ -3,6 +3,7 @@ using TaskList =Ikayaki.Models.Tasks;
 namespace Ikayaki;
 
 
+
 public partial class App : Application
 {
     public static class Model
@@ -15,9 +16,10 @@ public partial class App : Application
 	{
 		InitializeComponent();
 		Model.Tasks = new TaskList(connection);
-		// gets initial Tasks
-		//Control.ViewModel.Task.TaskGetAllCommand.ExecuteAsync();
 
-		MainPage = new AppShell();
+        // gets initial Tasks
+        //Model.Tasks.GetAll.Execute();
+        Model.Tasks.GetAll();
+        MainPage = new AppShell();
 	}
 }

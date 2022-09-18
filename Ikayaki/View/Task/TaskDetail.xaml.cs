@@ -15,16 +15,16 @@ namespace Ikayaki.Element
 
 namespace Ikayaki.Page
 {
-    [QueryProperty(nameof(task), "TheTask")]
+    [QueryProperty(nameof(Task), "TheTask")]
     public partial class TaskDetail : ContentPage
     {
-        TaskModel _task;
-        public TaskModel task
+        TaskModel task;
+        public TaskModel Task
         {
-            get => _task;
+            get => task;
             set
             {
-                _task = value;
+                task = value;
                 OnPropertyChanged();
             }
         }
@@ -32,7 +32,7 @@ namespace Ikayaki.Page
         {
             var navigationParameter = new Dictionary<string, object>
             {
-                { "TheTask", _task }
+                { "TheTask", Task }
             };
             await Shell.Current.GoToAsync($"tasks/new", navigationParameter);
         }

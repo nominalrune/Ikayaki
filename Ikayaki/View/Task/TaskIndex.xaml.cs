@@ -1,22 +1,14 @@
 using TaskModel = Ikayaki.Models.Task;
 
-
 namespace Ikayaki.Page
 {
-
     public partial class TaskIndex : ContentPage
     {
-        //public bool isRefreshing=false;// refresh‚ÍVM‚É‘‚­‚×‚µI
-        //public  ICommand refreshCommand;
         public TaskIndex()
         {
             InitializeComponent();
-            taskList.ItemsSource = App.Model.Tasks.list;
             BindingContext=this;
-
-            //refreshView.IsRefreshing = isRefreshing;
-            //refreshCommand=new ICommand(()=>)
-            //refreshView.Command =ViewModel.Task.TaskGetAllCommand;
+            taskList.ItemsSource = App.Model.Tasks.List;
         }
         async void OnAddButtonClicked(object sender, EventArgs args)
         {

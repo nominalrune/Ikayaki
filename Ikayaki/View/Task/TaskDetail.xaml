@@ -12,7 +12,8 @@
                     <Label
                         x:Name="name" 
                         Margin="15,5,5,10" 
-                        FontSize="Header" 
+                        FontSize="Header"
+                        Text="{Binding Task.Name}"
                         />
                     <BoxView Color="SlateBlue" HeightRequest="5"
                  HorizontalOptions="Fill"/>
@@ -20,7 +21,7 @@
                            Margin="25,0,0,0" 
                            Padding="5" 
                            FontSize="Body"
-                           
+                           Text="{Binding Task.Description}"
                            />
                 </VerticalStackLayout>
             </Frame>

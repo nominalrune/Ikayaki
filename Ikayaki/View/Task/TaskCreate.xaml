@@ -14,24 +14,28 @@
         </Grid.ColumnDefinitions>
         <VerticalStackLayout HorizontalOptions="Fill">
             <Entry Grid.Row="0" 
+            x:Name="f_Name"
            Placeholder="Enter name"
                FontSize="Header"
                     Margin="0,0,0,12"
+                   Text="{Binding Task.Name}"
               />
             <BoxView Color="SlateBlue" HeightRequest="5"
                  HorizontalOptions="Fill"/>
         </VerticalStackLayout>
         <Editor Grid.Row="1"
-                
+            x:Name="f_Description"
             Placeholder="Enter description"
             AutoSize="TextChanges"
             FontSize="Body"
+                   Text="{Binding Task.Description}"
             />
         <Button Text="Add Task"
             Grid.Row="2"
             Clicked="OnNewButtonClicked" />
 
         <Label
+            Text="{Binding StatusMessage}"
                Grid.Row="3" />
 
     </Grid>
