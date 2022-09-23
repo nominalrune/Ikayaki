@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:Ikayaki.TypeConverter"
+             x:Class="Ikayaki.Page.RecordCreate"
+             
+             BackgroundColor="#f8f8f8">
+    <!--<ContentPage.Resources>
+        <converter:TimeSpanToDateTimeConverter x:Key="TimeSpanToDateTime" />
+    </ContentPage.Resources>-->
+    <Grid HorizontalOptions="Fill"  Margin="24" Padding="5" RowSpacing="24" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <VerticalStackLayout HorizontalOptions="Fill">
+            <DatePicker Date="{Binding BaseDate}"/>
+            <Entry Grid.Row="0" 
+            x:Name="f_Name"
+           Placeholder="Enter name"
+               FontSize="Header"
+                    Margin="0,0,0,12"
+                   Text="{Binding Record.Title}"
+              />
+            <BoxView Color="SlateBlue" HeightRequest="5"
+                 HorizontalOptions="Fill"/>
+            <HorizontalStackLayout>
+
+                <TimePicker x:Name="StartedAtPicker" Time="{Binding StartedAtPick}" 
+                            />
+                <TimePicker x:Name="FinishedAtPicker" Time="{Binding FinishedAtPick}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <Editor Grid.Row="1"
+            x:Name="f_Description"
+            Placeholder="memo"
+            AutoSize="TextChanges"
+            FontSize="Body"
+                   Text="{Binding Record.Memo}"
+            />
+        <Button Text="Save"
+            Grid.Row="2"
+            Clicked="OnNewButtonClicked" />
+
+        <Label
+            Text="{Binding StatusMessage}"
+               Grid.Row="3" />
+
+    </Grid>
+
+</ContentPage>

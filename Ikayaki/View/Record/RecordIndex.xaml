@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ikayaki.Page.RecordIndex"
+             Title="RecordIndex">
+        <RefreshView x:Name="refreshView">
+            <AbsoluteLayout>
+                <CollectionView 
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    x:Name="RecordList"
+                    Grid.Row="0"
+                    SelectionMode="Single"
+                    SelectionChanged="OnCollectionViewSelectionChanged">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="2.5" Padding="7.5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="45" />
+                                <ColumnDefinition Width="45" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding Title}" />
+                            <Label Grid.Column="1" Text="{Binding StartedAt, StringFormat='{0:t}～'}" />
+                            <Label Grid.Column="2" Text="{Binding FinishedAt, StringFormat='～{0:t}'}" />
+                            <Label Grid.Column="3" Text="{Binding Memo}" />
+                            <Button Grid.Column="4" Text="✒" />
+                            <Button Grid.Column="5" Text="🗑️" />
+
+                        </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <StackLayout Margin="20"
+                     AbsoluteLayout.LayoutBounds="0.9,0.8,56,56"
+                     AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <Button Text="+"
+                        FontSize="48"
+                        Padding="0,0,0,4"
+                        WidthRequest="56"
+                        HeightRequest="56"
+                        CornerRadius="28"
+                    Clicked="OnAddButtonClicked" />
+                </StackLayout>
+            </AbsoluteLayout>
+        </RefreshView>
+    </ContentPage>

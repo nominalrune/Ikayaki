@@ -1,25 +1,26 @@
 ﻿using Ikayaki.Repositories;
-using TaskList =Ikayaki.Models.Tasks;
+using Ikayaki.Models;
+
 namespace Ikayaki;
-
-
 
 public partial class App : Application
 {
     public static class Model
     {
-        public static TaskList Tasks { get; internal set; }
+        public static Tasks Tasks { get; internal set; }
+        public static Records Records { get; internal set; }
     }
     public App(
 		Connection connection
 		)
 	{
 		InitializeComponent();
-		Model.Tasks = new TaskList(connection);
+        Model.Tasks = new Tasks(connection);
+        Model.Records = new Records(connection);
 
-        // gets initial Tasks
-        //Model.Tasks.GetAll.Execute();
         Model.Tasks.GetAll();
+        Model.Records.GetAll();
+
         MainPage = new AppShell();
 	}
 }

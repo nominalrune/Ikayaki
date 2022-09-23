@@ -6,11 +6,11 @@ namespace Ikayaki.Models
     public class Record
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public TimeSpan Time { get; set; }
-        public string Description { get; set; }
-        public int? ParentRecordId { get; set; }
-        public string Category { get; set; }
+        public int? Id { get; set; }
+        public string Title { get; set; }
+        public int? RelevantTaskId { get; set; }
+        public DateTime? StartedAt { get; set; }
+        public DateTime? FinishedAt { get; set; }
+        public string? Memo { get; set; }
     }
 }

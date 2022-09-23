@@ -16,9 +16,15 @@
         ContentTemplate="{DataTemplate page:MainPage}"/>
     </FlyoutItem>
     <FlyoutItem  Title="Tasks">
-        <ShellContent  Title="Index"
+        <ShellContent  Title="All Tasks"
         ContentTemplate="{DataTemplate page:TaskIndex}"/>
         <ShellContent Title="new task"
         ContentTemplate="{DataTemplate page:TaskCreate}"/>
+    </FlyoutItem>
+    <FlyoutItem  Title="Records">
+        <ShellContent  Title="All Index"
+        ContentTemplate="{DataTemplate page:RecordIndex}"/>
+        <ShellContent Title="new Records"
+        ContentTemplate="{DataTemplate page:RecordCreate}"/>
     </FlyoutItem>
 </Shell>

@@ -15,7 +15,10 @@ public partial class AppShell : Shell
         Routes = new Dictionary<string, Type>() {
             { "tasks", typeof(TaskIndex) },
             { "tasks/detail", typeof(TaskDetail)},
-            { "tasks/new", typeof(TaskCreate) }
+            { "tasks/new", typeof(TaskCreate) },
+            {"records",typeof(RecordIndex) },
+            {"records/detail", typeof(RecordDetail) },
+            {"records/new", typeof(RecordCreate) }
         };
 
         foreach (var item in Routes)

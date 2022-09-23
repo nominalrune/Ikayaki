@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ikayaki.Page.RecordDetail"
+             >
+    <AbsoluteLayout>
+        <ScrollView
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All">
+            <Frame Padding="15" Margin="30,20" CornerRadius="10" BorderColor="LightSlateGrey" BackgroundColor="#f8f8f8" HasShadow="True" >
+                <VerticalStackLayout>
+                    <Label
+                        x:Name="name" 
+                        Margin="15,5,5,10" 
+                        FontSize="Header"
+                        Text="{Binding Record.Title}"
+                        />
+                    <BoxView Color="SlateBlue" HeightRequest="5"
+                 HorizontalOptions="Fill"/>
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Record.StartedAt}" />
+                        <Label Text="{Binding Record.FinishedAt}" />
+                    </HorizontalStackLayout>
+                    <Label x:Name="description" 
+                           Margin="25,0,0,0" 
+                           Padding="5" 
+                           FontSize="Body"
+                           Text="{Binding Record.Memo}"
+                           />
+                </VerticalStackLayout>
+            </Frame>
+        </ScrollView>
+        <StackLayout Margin="20"
+                     AbsoluteLayout.LayoutBounds="0.9,0.8,56,56"
+                     AbsoluteLayout.LayoutFlags="PositionProportional
+                         ">
+            <Button Text="✍"
+                        FontSize="32"
+                        Padding="0,0,0,4"
+                        WidthRequest="56"
+                        HeightRequest="56"
+                        CornerRadius="28"
+                    Clicked="OnEditButtonClicked" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

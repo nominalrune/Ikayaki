@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ikayaki.Page.MainPage">
     <HorizontalStackLayout HorizontalOptions="Center">
-    <Button Text="View All Task"
+    <Button Text="View All Records"
             Margin="20"
             VerticalOptions="Center"
                 Clicked="OnIndexButtonClicked" />
-    <Button Text="Create New Task"
+    <Button Text="Create New Records"
             Margin="20"
             VerticalOptions="Center"
                 Clicked="OnCreateButtonClicked" />
