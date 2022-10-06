@@ -2,7 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ikayaki.Page.MainPage">
-    <HorizontalStackLayout HorizontalOptions="Center">
+    <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Button Text="View All Records"
+            Margin="20"
+            VerticalOptions="Center"
+                Clicked="OnTaskIndexButtonClicked" />
+            <Button Text="Create New Records"
+            Margin="20"
+            VerticalOptions="Center"
+                Clicked="OnTaskCreateButtonClicked" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
     <Button Text="View All Records"
             Margin="20"
             VerticalOptions="Center"
@@ -12,4 +23,11 @@
             VerticalOptions="Center"
                 Clicked="OnCreateButtonClicked" />
     </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Button Text="Go to Today's page"
+            Margin="20"
+            VerticalOptions="Center"
+                Clicked="OnTodayPageButtonClicked" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
 </ContentPage>

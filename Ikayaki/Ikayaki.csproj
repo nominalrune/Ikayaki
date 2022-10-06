@@ -78,6 +78,9 @@
     <MauiXaml Update="View\Record\RecordDetail.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
+    <MauiXaml Update="View\Record\TodaysRecord.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="View\Task\TaskCreate.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>

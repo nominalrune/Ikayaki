@@ -1,4 +1,6 @@
 ﻿using Ikayaki.Page;
+using Ikayaki.View.Record;
+
 namespace Ikayaki;
 
 public partial class AppShell : Shell
@@ -18,7 +20,8 @@ public partial class AppShell : Shell
             { "tasks/new", typeof(TaskCreate) },
             {"records",typeof(RecordIndex) },
             {"records/detail", typeof(RecordDetail) },
-            {"records/new", typeof(RecordCreate) }
+            {"records/new", typeof(RecordCreate) },
+            {"records/day", typeof(TodaysRecord) }
         };
 
         foreach (var item in Routes)
