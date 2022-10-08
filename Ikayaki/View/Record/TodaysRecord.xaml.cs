@@ -17,15 +17,40 @@ public partial class TodaysRecord : ContentPage
             OnPropertyChanged();
         }
     }
-    public void OnCollectionViewSelectionChanged(object sender, EventArgs args)
-    {
 
-    }
-    public void OnAddButtonClicked(object sender, EventArgs args)
+    public async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs args)
     {
+        _Record record = args.CurrentSelection.FirstOrDefault() as _Record;
 
+        var navigationParameter = new Dictionary<string, object>
+            {
+                { "TheRecord", record }
+            };
+        await Shell.Current.GoToAsync($"records/detail", navigationParameter);
     }
-    
+
+    public async void OnAddButtonClicked(object sender, EventArgs args)
+    {
+        await Shell.Current.GoToAsync($"records/new");
+    }
+
+    public async void OnPrevButtonClicked(object sender, EventArgs args)
+    {
+        var navigationParameter = new Dictionary<string, object>
+            {
+                { "ThisDay", ThisDay - new TimeSpan(1,0,0,0) }
+            };
+        await Shell.Current.GoToAsync($"records/day", navigationParameter);
+    }
+    public async void OnNextButtonClicked(object sender, EventArgs args)
+    {
+        var navigationParameter = new Dictionary<string, object>
+            {
+                { "ThisDay", ThisDay + new TimeSpan(1,0,0,0) }
+            };
+        await Shell.Current.GoToAsync($"records/day", navigationParameter);
+    }
+
 
     public TodaysRecord()
     {

@@ -18,10 +18,10 @@ public partial class AppShell : Shell
             { "tasks", typeof(TaskIndex) },
             { "tasks/detail", typeof(TaskDetail)},
             { "tasks/new", typeof(TaskCreate) },
-            {"records",typeof(RecordIndex) },
-            {"records/detail", typeof(RecordDetail) },
-            {"records/new", typeof(RecordCreate) },
-            {"records/day", typeof(TodaysRecord) }
+            { "records", typeof(RecordIndex) },
+            { "records/detail", typeof(RecordDetail) },
+            { "records/new", typeof(RecordCreate) },
+            { "records/day", typeof(TodaysRecord) }
         };
 
         foreach (var item in Routes)

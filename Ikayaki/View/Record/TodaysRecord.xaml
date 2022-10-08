@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ikayaki.View.Record.TodaysRecord"
+             xmlns:_this="clr-namespace:Ikayaki.View.Record"
              xmlns:helpers="clr-namespace:Ikayaki.View.Record.Parts"
+             xmlns:model="clr-namespace:Ikayaki.Models"
+             x:DataType="_this:TodaysRecord"
              Title="TodaysRecord">
     <RefreshView x:Name="refreshView">
         <AbsoluteLayout>
@@ -10,28 +13,29 @@
                     AbsoluteLayout.LayoutBounds="0,0,1,1"
                     AbsoluteLayout.LayoutFlags="All">
                 <HorizontalStackLayout VerticalOptions="Center">
-                    <Button Text="＜" />
+                    <Button Text="＜" Clicked="OnPrevButtonClicked"/>
                     <Label Text="{Binding ThisDay, StringFormat='{0:yyyy/MM/dd}'}" FontSize="Header"/>
-                    <Button Text="＞" />
+                    <Button Text="＞"  Clicked="OnNextButtonClicked"/>
                 </HorizontalStackLayout>
                 <CollectionView 
                     x:Name="RecordList"
                     SelectionMode="Single"
                     SelectionChanged="OnCollectionViewSelectionChanged">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="2.5" Padding="7.5">
+                        <DataTemplate
+                            x:DataType="model:Record">
+                            <Grid Margin="2.5" Padding="7.5" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="45" />
+                                    <ColumnDefinition Width="45"  />
                                     <ColumnDefinition Width="45" />
                                 </Grid.ColumnDefinitions>
                                 <helpers:EditableCellText Grid.Column="0" Value="{Binding Title}" IsEdit="False" />
-                                <helpers:EditableCellTimeSpan Grid.Column="1" Value="{Binding StartedAt, StringFormat='{0:t}'}" IsEdit="False" />
-                                <helpers:EditableCellTimeSpan Grid.Column="2" Value="{Binding FinishedAt, StringFormat='{0:t}'}" IsEdit="False" />
+                                <helpers:EditableCellTimeSpan Grid.Column="1" Value="{Binding StartedAt, StringFormat='{0:hh:mm}~'}" IsEdit="False" />
+                                <helpers:EditableCellTimeSpan Grid.Column="2" Value="{Binding FinishedAt, StringFormat='~{0:hh:mm}'}" IsEdit="False" />
                                 <helpers:EditableCellText Grid.Column="3" Value="{Binding Memo}" IsEdit="False" />
                                 <Button Grid.Column="4" Text="✒" />
                                 <Button Grid.Column="5" Text="🗑️" />
