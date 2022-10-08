@@ -11,6 +11,6 @@ namespace Ikayaki.Models
         public int? RelevantTaskId { get; set; }
         public DateTime? StartedAt { get; set; }
         public DateTime? FinishedAt { get; set; }
-        public string? Memo { get; set; }
+        public string Memo { get; set; }
     }
 }

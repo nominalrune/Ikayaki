@@ -24,7 +24,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate
                             x:DataType="model:Record">
-                            <Grid Margin="2.5" Padding="7.5" >
+                            <Grid Margin="2.5" Padding="7.5" HeightRequest="55">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
