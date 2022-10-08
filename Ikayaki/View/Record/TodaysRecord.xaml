@@ -42,6 +42,14 @@
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <Border
+                            Opacity=".8"
+                            Shadow="2"
+                            BackgroundColor="LightGray">
+                            <Label Text="The is no item here."></Label>
+                        </Border>
+                    </CollectionView.EmptyView>
                 </CollectionView>
             </VerticalStackLayout>
             <StackLayout Margin="20"
