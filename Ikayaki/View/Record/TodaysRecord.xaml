@@ -33,11 +33,11 @@
                                     <ColumnDefinition Width="45"  />
                                     <ColumnDefinition Width="45" />
                                 </Grid.ColumnDefinitions>
-                                <helpers:EditableCellText Grid.Column="0" Value="{Binding Title}" IsEdit="False" />
-                                <helpers:EditableCellTimeSpan Grid.Column="1" Value="{Binding StartedAt, StringFormat='{0:hh:mm}~'}" IsEdit="False" />
-                                <helpers:EditableCellTimeSpan Grid.Column="2" Value="{Binding FinishedAt, StringFormat='~{0:hh:mm}'}" IsEdit="False" />
-                                <helpers:EditableCellText Grid.Column="3" Value="{Binding Memo}" IsEdit="False" />
-                                <Button Grid.Column="4" Text="✒" />
+                                <helpers:EditableCellText Grid.Column="0" Value="{Binding Title}" IsEdit="{Binding Source={Reference IsEdit}, Path=IsToggled}" />
+                                <helpers:EditableCellTimeSpan Grid.Column="1" Value="{Binding StartedAt}" IsEdit="{Binding Source={Reference IsEdit}, Path=IsToggled}" />
+                                <helpers:EditableCellTimeSpan Grid.Column="2" Value="{Binding FinishedAt}" IsEdit="{Binding Source={Reference IsEdit}, Path=IsToggled}" />
+                                <helpers:EditableCellText Grid.Column="3" Value="{Binding Memo}" IsEdit="{Binding Source={Reference IsEdit}, Path=IsToggled}" />
+                                <Switch Grid.Column="4" x:Name="IsEdit"/>
                                 <Button Grid.Column="5" Text="🗑️" />
                             </Grid>
                         </DataTemplate>
@@ -45,7 +45,6 @@
                     <CollectionView.EmptyView>
                         <Border
                             Opacity=".8"
-                            Shadow="2"
                             BackgroundColor="LightGray">
                             <Label Text="The is no item here."></Label>
                         </Border>

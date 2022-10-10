@@ -17,7 +17,6 @@ public partial class TodaysRecord : ContentPage
             OnPropertyChanged();
         }
     }
-
     public async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs args)
     {
         _Record record = args.CurrentSelection.FirstOrDefault() as _Record;
@@ -50,7 +49,7 @@ public partial class TodaysRecord : ContentPage
             };
         await Shell.Current.GoToAsync($"records/day", navigationParameter);
     }
-
+   
 
     public TodaysRecord()
     {
@@ -63,4 +62,5 @@ public partial class TodaysRecord : ContentPage
         )
         );
     }
+
 }

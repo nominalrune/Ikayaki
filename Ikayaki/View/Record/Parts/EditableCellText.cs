@@ -29,10 +29,11 @@ public class EditableCellText : ContentView
         set
         {
             SetValue(IsEditProperty, value);
-            OnSwitch(new(), new());
+            OnPropertyChanged();
+            OnSwitch();
         }
     }
-    private void OnSwitch(object sender, System.EventArgs e)
+    private void OnSwitch()
     {
         if (IsEdit)
         {
