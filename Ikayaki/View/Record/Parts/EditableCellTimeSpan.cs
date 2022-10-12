@@ -7,6 +7,13 @@ public class EditableCellTimeSpan : Microsoft.Maui.Controls.ContentView
 {
     public Label LabelView = new();
     public TimePicker EditView = new();
+    public new Microsoft.Maui.Controls.View Content
+    {
+        get {
+            if (IsEdit) { return EditView; }
+            else { return LabelView; }
+        }
+    }
     public static readonly BindableProperty ValueProperty = BindableProperty.Create(
         nameof(Value),
         typeof(DateTime),
@@ -34,27 +41,15 @@ public class EditableCellTimeSpan : Microsoft.Maui.Controls.ContentView
         set
         {
             SetValue(IsEditProperty, value);
-            OnSwitch();
          }
     }
-    private void OnSwitch()
-    {
-        if (IsEdit)
-        {
-            Content = EditView;
-        }
-        else
-        {
-            Content = LabelView;
-        }
-    }
+
     public EditableCellTimeSpan()
     {
         BaseDate = Value.Date;
         LabelView.BindingContext = this;
         EditView.BindingContext = this;
-        LabelView.SetBinding(Label.TextProperty, "Value", stringFormat:"{0:HH:mm}");
+        LabelView.SetBinding(Label.TextProperty, "Value", stringFormat:"{0:HH-mm}");
         EditView.SetBinding(TimePicker.TimeProperty, "ValueInTimeSpan");
-        Content = LabelView;
     }
 }

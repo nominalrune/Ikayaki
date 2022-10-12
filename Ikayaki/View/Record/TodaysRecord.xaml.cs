@@ -28,6 +28,10 @@ public partial class TodaysRecord : ContentPage
         await Shell.Current.GoToAsync($"records/detail", navigationParameter);
     }
 
+    public void OnToggle(object sender, EventArgs args)
+    {
+
+    }
     public async void OnAddButtonClicked(object sender, EventArgs args)
     {
         await Shell.Current.GoToAsync($"records/new");

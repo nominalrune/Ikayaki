@@ -4,30 +4,20 @@
              x:Class="Ikayaki.Page.MainPage">
     <VerticalStackLayout>
         <HorizontalStackLayout HorizontalOptions="Center">
-            <Button Text="View All Records"
-            Margin="20"
-            VerticalOptions="Center"
-                Clicked="OnTaskIndexButtonClicked" />
-            <Button Text="Create New Records"
-            Margin="20"
-            VerticalOptions="Center"
-                Clicked="OnTaskCreateButtonClicked" />
-        </HorizontalStackLayout>
-        <HorizontalStackLayout HorizontalOptions="Center">
-    <Button Text="View All Records"
-            Margin="20"
-            VerticalOptions="Center"
-                Clicked="OnIndexButtonClicked" />
-    <Button Text="Create New Records"
-            Margin="20"
-            VerticalOptions="Center"
-                Clicked="OnCreateButtonClicked" />
-    </HorizontalStackLayout>
-        <HorizontalStackLayout HorizontalOptions="Center">
             <Button Text="Go to Today's page"
             Margin="20"
             VerticalOptions="Center"
                 Clicked="OnTodayPageButtonClicked" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Button Text="View All Records"
+            Margin="20"
+            VerticalOptions="Center"
+                Clicked="OnIndexButtonClicked" />
+            <Button Text="Create New Records"
+            Margin="20"
+            VerticalOptions="Center"
+                Clicked="OnCreateButtonClicked" />
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
